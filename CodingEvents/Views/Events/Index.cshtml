@@ -5,12 +5,19 @@
     <p>No events yet!</p>
 }
 
-<ul>
-    @foreach (string meeting in ViewBag.events)
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    @foreach (var meeting in ViewBag.events)
     {
-        <li>@meeting</li>
+        <tr>
+            <td>@meeting.Key</td>
+            <td>@meeting.Value</td>
+        </tr>
     }
-</ul>
+</table>
 
 <p>
     <a asp-controller="Events" asp-action="Add">Add Event</a>
