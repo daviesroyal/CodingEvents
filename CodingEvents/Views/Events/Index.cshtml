@@ -10,11 +10,11 @@
         <th>Name</th>
         <th>Description</th>
     </tr>
-    @foreach (var meeting in ViewBag.events)
+    @foreach (var evt in ViewBag.events)
     {
         <tr>
-            <td>@meeting.Key</td>
-            <td>@meeting.Value</td>
+            <td>@evt.Name</td>
+            <td>@evt.Description</td>
         </tr>
     }
 </table>
