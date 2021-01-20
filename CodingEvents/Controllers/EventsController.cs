@@ -34,7 +34,11 @@ namespace CodingEvents.Controllers
                 {
                     Name = addEventViewModel.Name,
                     Description = addEventViewModel.Description,
-                    ContactEmail = addEventViewModel.ContactEmail
+                    ContactEmail = addEventViewModel.ContactEmail,
+                    Type = addEventViewModel.Type,
+                    Location = addEventViewModel.Location,
+                    NumOfAttendees = addEventViewModel.NumOfAttendees,
+                    RegistrationRequired = addEventViewModel.RegistrationRequired
                 };
                 EventData.Add(newEvent);
                 return Redirect("/events");
