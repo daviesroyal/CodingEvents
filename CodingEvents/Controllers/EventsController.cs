@@ -44,7 +44,6 @@ namespace CodingEvents.Controllers
                     Type = addEventViewModel.Type,
                     Location = addEventViewModel.Location,
                     NumOfAttendees = addEventViewModel.NumOfAttendees,
-                    RegistrationRequired = addEventViewModel.RegistrationRequired
                 };
                 context.Events.Add(newEvent);
                 context.SaveChanges();

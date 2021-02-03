@@ -13,7 +13,6 @@ namespace CodingEvents.Models
         public EventType Type { get; set; }
         public string Location { get; set; }
         public int NumOfAttendees { get; set; }
-        public bool RegistrationRequired { get; set; }
 
         public int Id { get; set; }
 
