@@ -27,7 +27,7 @@ namespace CodingEvents.ViewModels
         [Range(0, 100, ErrorMessage = "Cannot have more than 100 attendees.")]
         public int NumOfAttendees { get; set; }
 
-        public bool RegistrationRequired { get; set; }
+        public bool RegistrationRequired = true;
 
         [Compare("RegistrationRequired")]
         public bool IsTrue { get { return true; } }
