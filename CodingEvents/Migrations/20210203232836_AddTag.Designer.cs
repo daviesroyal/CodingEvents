@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodingEvents.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    [Migration("20210201235116_CategoryMigration")]
-    partial class CategoryMigration
+    [Migration("20210203232836_AddTag")]
+    partial class AddTag
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,9 @@ namespace CodingEvents.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("ContactEmail")
@@ -39,13 +42,9 @@ namespace CodingEvents.Migrations
                     b.Property<int>("NumOfAttendees")
                         .HasColumnType("int");
 
-                    b.Property<bool>("RegistrationRequired")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Events");
                 });
@@ -61,7 +60,32 @@ namespace CodingEvents.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventCategories");
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("CodingEvents.Models.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("CodingEvents.Models.Event", b =>
+                {
+                    b.HasOne("CodingEvents.Models.EventCategory", "Category")
+                        .WithMany("Events")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
